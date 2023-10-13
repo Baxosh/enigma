@@ -1,0 +1,17 @@
+{% load static %}
+{% load request %}
+
+<div style="width: 35rem; margin-left: auto; margin-right: auto;">
+    <div style="border: none; border-bottom: solid 1px #d0d0d0; text-align: center;">
+        <img src="https://crmneo.com/static/logo.jpg" style="margin-bottom: 1rem; text-align: center; width: 12rem; margin-left: auto; margin-right: auto;" />
+    </div>
+
+    <div>{% block body %}{% endblock %}</div>
+
+    <div style="margin-top: 3rem;">
+        <div style="color: #636363; text-align: center;">
+            Made by <a href="https://mondaylabs.tech">Monday</a> team.<br />
+            All rights reserved
+        </div>
+    </div>
+</div>

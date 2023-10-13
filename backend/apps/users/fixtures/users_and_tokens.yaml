@@ -1,0 +1,597 @@
+# USERS
+-
+    model: "users.User"
+    pk: 1
+    fields:
+        email: "angelina@gmail.com"
+        username: "angelina@gmail.com"
+        first_name: "Angelina"
+        last_name: "Jolie"
+        groups: [[admin]]
+        company: 1
+        verified_at: "2018-01-01 00:00:00+00:00"
+        password: "pbkdf2_sha256$120000$Q3ICPM6omVjp$liGZrVdJWPLpkne0vjBLnJr4S+v49AoVABreMeAwNBU=" # password
+
+-
+    model: "users.User"
+    pk: 2
+    fields:
+        email: "samuel@gmail.com"
+        username: "samuel@gmail.com"
+        first_name: "Samuel"
+        last_name: "Jackson"
+        groups: [[teacher]]
+        company: 1
+        verified_at: "2018-01-01 00:00:00+00:00"
+        password: "pbkdf2_sha256$120000$Q3ICPM6omVjp$liGZrVdJWPLpkne0vjBLnJr4S+v49AoVABreMeAwNBU=" # password
+
+-
+    model: "users.User"
+    pk: 3
+    fields:
+        email: "monica@gmail.com"
+        username: "monica@gmail.com"
+        first_name: "Monica"
+        last_name: "Bellucci"
+        groups: [[accountant]]
+        company: 1
+        verified_at: "2018-01-01 00:00:00+00:00"
+        password: "pbkdf2_sha256$120000$Q3ICPM6omVjp$liGZrVdJWPLpkne0vjBLnJr4S+v49AoVABreMeAwNBU=" # password
+
+-
+    model: "users.User"
+    pk: 4
+    fields:
+        email: "scarlett@gmail.com"
+        username: "scarlett@gmail.com"
+        first_name: "Scarlett"
+        last_name: "Johansson"
+        groups: [[accountant]]
+        company: 1
+        verified_at: "2018-01-01 00:00:00+00:00"
+        password: "pbkdf2_sha256$120000$Q3ICPM6omVjp$liGZrVdJWPLpkne0vjBLnJr4S+v49AoVABreMeAwNBU=" # password
+
+
+
+# TOKENS
+-
+    model: "users.Token"
+    pk: 1
+    fields:
+        user_id: 1
+        key: "af602e8f234ecc9ba03eb8eef2e6eb9c"
+        expires_at: "4000-01-01 00:00:00+00:00"
+        created_at: "2018-01-01 00:00:00+00:00"
+        updated_at: "2018-01-01 00:00:00+00:00"
+
+-
+    model: "users.Token"
+    pk: 2
+    fields:
+        user_id: 2
+        key: "b4f89a9ae6c9dc283cac57ed870910f3"
+        expires_at: "4000-01-01 00:00:00+00:00"
+        created_at: "2018-01-01 00:00:00+00:00"
+        updated_at: "2018-01-01 00:00:00+00:00"
+
+-
+    model: "users.Token"
+    pk: 3
+    fields:
+        user_id: 3
+        key: "120fbeebd5f8d4c460a232b904b9bec7"
+        expires_at: "4000-01-01 00:00:00+00:00"
+        created_at: "2018-01-01 00:00:00+00:00"
+        updated_at: "2018-01-01 00:00:00+00:00"
+
+-
+    model: "users.Token"
+    pk: 4
+    fields:
+        user_id: 4
+        key: "5e84409f824bae3e5aa03a3efe4313c9"
+        expires_at: "4000-01-01 00:00:00+00:00"
+        created_at: "2018-01-01 00:00:00+00:00"
+        updated_at: "2018-01-01 00:00:00+00:00"
+
+
+# Group Permissions
+- model: auth.group
+  pk: 1
+  fields:
+    name: admin
+    permissions:
+    - - add_telegraminvitation
+      - telegram
+      - telegraminvitation
+    - - add_lesson
+      - academy
+      - lesson
+    - - change_lesson
+      - academy
+      - lesson
+    - - delete_lesson
+      - academy
+      - lesson
+    - - view_lesson
+      - academy
+      - lesson
+    - - change_visit
+      - academy
+      - visit
+    - - view_visit
+      - academy
+      - visit
+    - - add_advert
+      - academy
+      - advert
+    - - change_advert
+      - academy
+      - advert
+    - - delete_advert
+      - academy
+      - advert
+    - - view_advert
+      - academy
+      - advert
+    - - add_timeline
+      - academy
+      - timeline
+    - - view_timeline
+      - academy
+      - timeline
+    - - add_room
+      - academy
+      - room
+    - - change_room
+      - academy
+      - room
+    - - delete_room
+      - academy
+      - room
+    - - view_room
+      - academy
+      - room
+    - - view_advert_statistics
+      - academy
+      - advert
+    - - add_course
+      - academy
+      - course
+    - - change_course
+      - academy
+      - course
+    - - delete_course
+      - academy
+      - course
+    - - view_course
+      - academy
+      - course
+    - - add_group
+      - academy
+      - group
+    - - change_group
+      - academy
+      - group
+    - - delete_group
+      - academy
+      - group
+    - - view_group
+      - academy
+      - group
+    - - add_status
+      - academy
+      - status
+    - - change_status
+      - academy
+      - status
+    - - delete_status
+      - academy
+      - status
+    - - view_status
+      - academy
+      - status
+    - - add_student
+      - academy
+      - student
+    - - change_student
+      - academy
+      - student
+    - - delete_student
+      - academy
+      - student
+    - - view_student
+      - academy
+      - student
+    - - add_customer
+      - academy
+      - customer
+    - - change_customer
+      - academy
+      - customer
+    - - delete_customer
+      - academy
+      - customer
+    - - view_customer
+      - academy
+      - customer
+    - - view_cashback
+      - finance
+      - cashback
+    - - close_cashback
+      - finance
+      - cashback
+    - - add_salary
+      - finance
+      - transaction
+    - - add_student_payment
+      - finance
+      - transaction
+    - - add_transaction
+      - finance
+      - transaction
+    - - change_transaction
+      - finance
+      - transaction
+    - - delete_transaction
+      - finance
+      - transaction
+    - - view_salary
+      - finance
+      - transaction
+    - - view_student_payment
+      - finance
+      - transaction
+    - - view_transaction
+      - finance
+      - transaction
+    - - view_finance_statistics
+      - finance
+      - transaction
+    - - add_transactioncategory
+      - finance
+      - transactioncategory
+    - - change_transactioncategory
+      - finance
+      - transactioncategory
+    - - delete_transactioncategory
+      - finance
+      - transactioncategory
+    - - view_outcome_statistics
+      - finance
+      - transactioncategory
+    - - view_transactioncategory
+      - finance
+      - transactioncategory
+    - - add_wallet
+      - finance
+      - wallet
+    - - change_wallet
+      - finance
+      - wallet
+    - - delete_wallet
+      - finance
+      - wallet
+    - - view_wallet
+      - finance
+      - wallet
+    - - view_wallets_simple_list
+      - finance
+      - wallet
+    - - add_employee
+      - staff
+      - employee
+    - - change_employee
+      - staff
+      - employee
+    - - delete_employee
+      - staff
+      - employee
+    - - view_employee
+      - staff
+      - employee
+    - - view_simple_employees_list
+      - staff
+      - employee
+    - - add_employeeinvitation
+      - staff
+      - employeeinvitation
+    - - add_task
+      - task
+      - task
+    - - change_task
+      - task
+      - task
+    - - delete_task
+      - task
+      - task
+    - - view_task
+      - task
+      - task
+    - - add_parent
+      - academy
+      - parent
+    - - change_parent
+      - academy
+      - parent
+    - - delete_parent
+      - academy
+      - parent
+    - - view_parent
+      - academy
+      - parent
+    - - add_parentstudent
+      - academy
+      - parentstudent
+    - - change_parentstudent
+      - academy
+      - parentstudent
+    - - delete_parentstudent
+      - academy
+      - parentstudent
+    - - view_parentstudent
+      - academy
+      - parentstudent
+- model: auth.group
+  pk: 2
+  fields:
+    name: teacher
+    permissions:
+    - - add_lesson
+      - academy
+      - lesson
+    - - view_lesson
+      - academy
+      - lesson
+    - - view_visit
+      - academy
+      - visit
+    - - view_course
+      - academy
+      - course
+    - - view_advert
+      - academy
+      - advert
+    - - add_group
+      - academy
+      - group
+    - - change_group
+      - academy
+      - group
+    - - delete_group
+      - academy
+      - group
+    - - view_group
+      - academy
+      - group
+    - - add_status
+      - academy
+      - status
+    - - change_status
+      - academy
+      - status
+    - - delete_status
+      - academy
+      - status
+    - - view_status
+      - academy
+      - status
+    - - add_student
+      - academy
+      - student
+    - - change_student
+      - academy
+      - student
+    - - delete_student
+      - academy
+      - student
+    - - view_student
+      - academy
+      - student
+    - - view_timeline
+      - academy
+      - timeline
+    - - view_room
+      - academy
+      - room
+    - - add_student_payment
+      - finance
+      - transaction
+    - - add_transaction
+      - finance
+      - transaction
+    - - view_student_payment
+      - finance
+      - transaction
+    - - view_transaction
+      - finance
+      - transaction
+    - - view_wallets_simple_list
+      - finance
+      - wallet
+- model: auth.group
+  pk: 3
+  fields:
+    name: accountant
+    permissions:
+    - - add_transaction
+      - finance
+      - transaction
+    - - view_transaction
+      - finance
+      - transaction
+    - - view_transactioncategory
+      - finance
+      - transactioncategory
+    - - view_wallet
+      - finance
+      - wallet
+    - - view_employee
+      - staff
+      - employee
+    - - view_cashback
+      - finance
+      - cashback
+    - - close_cashback
+      - finance
+      - cashback
+- model: auth.group
+  pk: 4
+  fields:
+    name: marketing
+    permissions:
+    - - view_course
+      - academy
+      - course
+    - - add_advert
+      - academy
+      - advert
+    - - view_advert
+      - academy
+      - advert
+    - - view_advert_statistics
+      - academy
+      - advert
+    - - add_group
+      - academy
+      - group
+    - - change_group
+      - academy
+      - group
+    - - view_group
+      - academy
+      - group
+    - - add_status
+      - academy
+      - status
+    - - change_status
+      - academy
+      - status
+    - - delete_status
+      - academy
+      - status
+    - - view_status
+      - academy
+      - status
+    - - add_student
+      - academy
+      - student
+    - - change_student
+      - academy
+      - student
+    - - delete_student
+      - academy
+      - student
+    - - view_student
+      - academy
+      - student
+    - - view_timeline
+      - academy
+      - timeline
+    - - view_room
+      - academy
+      - room
+    - - add_student_payment
+      - finance
+      - transaction
+    - - view_student_payment
+      - finance
+      - transaction
+    - - view_wallets_simple_list
+      - finance
+      - wallet
+    - - view_simple_employees_list
+      - staff
+      - employee
+    - - add_task
+      - task
+      - task
+    - - change_task
+      - task
+      - task
+    - - delete_task
+      - task
+      - task
+    - - view_task
+      - task
+      - task
+- model: auth.group
+  pk: 5
+  fields:
+    name: seller
+    permissions:
+    - - view_course
+      - academy
+      - course
+    - - add_advert
+      - academy
+      - advert
+    - - view_advert
+      - academy
+      - advert
+    - - view_advert_statistics
+      - academy
+      - advert
+    - - add_group
+      - academy
+      - group
+    - - change_group
+      - academy
+      - group
+    - - view_group
+      - academy
+      - group
+    - - add_status
+      - academy
+      - status
+    - - change_status
+      - academy
+      - status
+    - - delete_status
+      - academy
+      - status
+    - - view_status
+      - academy
+      - status
+    - - add_student
+      - academy
+      - student
+    - - change_student
+      - academy
+      - student
+    - - delete_student
+      - academy
+      - student
+    - - view_student
+      - academy
+      - student
+    - - view_timeline
+      - academy
+      - timeline
+    - - view_room
+      - academy
+      - room
+    - - add_student_payment
+      - finance
+      - transaction
+    - - view_student_payment
+      - finance
+      - transaction
+    - - view_wallets_simple_list
+      - finance
+      - wallet
+    - - view_simple_employees_list
+      - staff
+      - employee
+    - - add_task
+      - task
+      - task
+    - - change_task
+      - task
+      - task
+    - - delete_task
+      - task
+      - task
+    - - view_task
+      - task
+      - task

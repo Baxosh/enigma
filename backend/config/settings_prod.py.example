@@ -1,0 +1,26 @@
+from .settings import *
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'crmneo',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    }
+}
+
+FRONTEND_DOMAIN = ''
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = ''  # SendGrid API Key
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = ''
+
+
+STATIC_ROOT = '/static'
+MEDIA_ROOT = '/uploads'
