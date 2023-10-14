@@ -1,24 +1,24 @@
-from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from django.contrib.auth import authenticate
+from rest_framework.serializers import ModelSerializer
+
 from core.utils.serializers import BaseSerializer
+from core.utils.validation_phone_number import validation_phone_number
 from users.models import User
 
 
 class SignInSerializer(BaseSerializer):
-    email = serializers.EmailField(required=True, trim_whitespace=True)
-    password = serializers.CharField(required=True, trim_whitespace=False)
+    phone = serializers.CharField(required=True)
 
     def validate(self, attrs):
-        user = authenticate(
-            request=self.context.get('request'),
-            username=attrs.get('email').lower(),  # Using email as username.
-            password=attrs.get('password')
-        )
-
-        if not user or not user.company:
-            msg = _('Указан неправильный логин или пароль')
+        phone = attrs.get('phone')
+        if not validation_phone_number(phone):
+            msg = 'Указан неправильный Телефон номер! Пример: 998998887766'
             raise serializers.ValidationError(msg, code='authorization')
 
-        attrs['user'] = user
         return attrs
+
+
+class UserSimpleSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'phone', 'full_name')
