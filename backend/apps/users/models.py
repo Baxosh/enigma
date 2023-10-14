@@ -1,8 +1,10 @@
-import uuid
 from django.contrib.auth.models import AbstractUser
+from django.db.models import PROTECT
+
 from core.models import BaseModel
 from django.db import models
 
+from core.utils.files import FilePath
 from users.querysets.user import UsersManager
 from users.utils import tokens
 from users.utils.fields import expires_default, expires_hour
@@ -10,13 +12,27 @@ from users.utils.fields import expires_default, expires_hour
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)  # override default email field
-    confirmation_code = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    verified_at = models.DateTimeField(null=True, blank=True)
+    full_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    age = models.PositiveIntegerField()
+    five_year = models.CharField(max_length=255)
+    lifetime = models.CharField(max_length=255)
     objects = UsersManager()
 
     class Meta(AbstractUser.Meta):
         db_table = 'user_users'
         app_label = 'users'
+
+
+class Analyses(BaseModel):
+    user = models.ForeignKey(User, PROTECT,related_name='analyses')
+    date = models.DateTimeField(auto_now_add=True)
+    image = models.FileField(upload_to=FilePath('analyses'), null=True, blank=True, max_length=255)
+    cyst = models.BooleanField(default=False)
+    calcination = models.BooleanField(default=False)
+    mastopaty = models.BooleanField(default=False)
+    cancer = models.BooleanField(default=False)
+    fibroadenoma = models.BooleanField(default=False)
 
 
 class Token(BaseModel):
