@@ -5,6 +5,7 @@ from core.models import BaseModel
 from django.db import models
 
 from core.utils.files import FilePath
+from users.querysets.anlyses import AnalysesManager
 from users.querysets.token import TokenManager
 from users.querysets.user import UsersManager
 from users.utils import tokens
@@ -34,7 +35,7 @@ class Analyses(BaseModel):
     cancer = models.BooleanField(default=False)
     fibroadenoma = models.BooleanField(default=False)
 
-    # objects = UsersManager()
+    objects = AnalysesManager()
 
     class Meta(AbstractUser.Meta):
         db_table = 'user_analyses'

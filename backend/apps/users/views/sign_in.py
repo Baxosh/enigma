@@ -18,7 +18,7 @@ class SignInView(GenericAPIView):
 
 
 def sign_in_response(phone):
-    user, _ = User.objects.get_or_create(phone=phone)
+    user, _ = User.objects.get_or_create(phone=phone, username=phone)
     token, _ = Token.objects.get_or_create(expires_at__gte=timezone.now(), user=user)
 
     user = UserSimpleSerializer(user)
