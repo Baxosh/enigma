@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom'
-import { useMemo } from 'react'
+import {useLocation} from 'react-router-dom'
+import {useMemo} from 'react'
 import queryString from 'query-string'
 
 export function useQueryParams() {
