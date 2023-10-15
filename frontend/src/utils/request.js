@@ -1,11 +1,11 @@
 import axios from 'axios'
 import humps from 'humps'
 
-export const domain = process.env.REACT_APP_BASE_URL || `${window.location.protocol}//${window.location.hostname}`
+export const domain = import.meta.env.VITE_APP_BASE_URL || `${window.location.protocol}//${window.location.hostname}`
 
 //  Add Base URL and change snake_case to camelCase
 const baseAxios = axios.create({
-    baseURL: `${domain}/api/v1/`,
+    baseURL: `${domain}`,
     transformResponse: [
         ...axios.defaults.transformResponse,
         humps.camelizeKeys,

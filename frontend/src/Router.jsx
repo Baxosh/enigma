@@ -1,15 +1,21 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home.jsx";
+import Policy from "./pages/Policy.jsx";
+import Login from "./pages/Login.jsx";
+import Test from "./pages/Test.jsx";
+import Answer from "./pages/Answer.jsx";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-            </Routes>
-        </BrowserRouter>
-    );
+    return (<BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Test/>}/>
+            <Route path="/home" element={<Home/>}/>
+            <Route path="/answer" element={<Answer/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/policy" element={<Policy/>}/>
+        </Routes>
+    </BrowserRouter>);
 }
 
 export default Router;
