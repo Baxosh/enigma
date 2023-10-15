@@ -21,4 +21,4 @@ class SignInSerializer(BaseSerializer):
 class UserSimpleSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'phone', 'full_name')
+        fields = ('id', 'phone', 'full_name', 'five_year', 'lifetime')
