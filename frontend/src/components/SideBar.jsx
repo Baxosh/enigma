@@ -8,8 +8,8 @@ function SideBar() {
     const navigate = useNavigate()
 
     const logout = () => {
-        navigate('/register')
-        localStorage.removeItem('user')
+        navigate('/login')
+        localStorage.removeItem('token')
     }
 
     return (
@@ -30,7 +30,7 @@ function SideBar() {
             <div
                 onClick={logout}
                 className='py-2 px-8 text-base-100 flex items-center gap-2 cursor-pointer'>
-                <IoLogOutOutline/> Log out
+                <IoLogOutOutline/> Выход
             </div>
         </div>
     );
