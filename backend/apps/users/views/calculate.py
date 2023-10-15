@@ -12,4 +12,4 @@ class CalculateView(APIView):
         serializer = CalculateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response({}, 201)
+        return Response(serializer.data, 201)

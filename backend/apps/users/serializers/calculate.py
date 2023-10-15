@@ -64,11 +64,11 @@ class CalculateSerializer(ModelSerializer):
                 num_biops = 1.62
 
         atyp_hyper = 1
-        if atypical_hyperplasia is None or atypical_hyperplasia == 2:
+        if atypical_hyperplasia == 0:
             atyp_hyper = 1
         elif atypical_hyperplasia == 1:
             atyp_hyper = 0.93
-        elif atypical_hyperplasia == 3:
+        elif atypical_hyperplasia == 2:
             atyp_hyper = 1.82
 
         baseline_age_race_find = [idx for idx, item in enumerate(list(baseline_age_list.values())) if age in item]
@@ -96,11 +96,13 @@ class CalculateSerializer(ModelSerializer):
             'first_live_birth',
             'first_degree_cancer',
             'previous_breast_biopsy',
-            'atypical_hyperplasia'
+            'atypical_hyperplasia',
+            'lifetime',
+            'five_year'
         )
 
 
 class UserSimpleSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'phone', 'full_name')
+        fields = ('id', 'phone', 'full_name', 'five_year', 'lifetime')

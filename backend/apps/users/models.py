@@ -34,6 +34,7 @@ class Analyses(BaseModel):
     mastopaty = models.BooleanField(default=False)
     cancer = models.BooleanField(default=False)
     fibroadenoma = models.BooleanField(default=False)
+    image_to_bit = models.TextField()
 
     objects = AnalysesManager()
 
