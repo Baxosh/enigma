@@ -70,7 +70,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1',
     'http://localhost:3000',
-    'http://173.249.29.176',
+    'http://localhost:5173',
 )
 
 ROOT_URLCONF = 'config.urls'

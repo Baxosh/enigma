@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from "axios";
 
 function Test() {
     const [selectedAge, setSelectedAge] = useState('');
@@ -9,7 +10,7 @@ function Test() {
     const [selectedGaveBirthAge, setSelectedGaveBirthAge] = useState('');
     const [selectedInput, setSelectedInput] = useState(false);
     const [name, setName] = useState('')
-    const [phone, setPhone] = useState(null)
+    const [phone, setPhone] = useState('')
 
     const ages = [];
 
@@ -27,7 +28,7 @@ function Test() {
 
     const handleSelectCountChange2 = (event) => {
         setSelectedCount2(event.target.value);
-        if (event.target.value === 'Одна' || event.target.value === 'Больше одной') {
+        if (event.target.value === '1' || event.target.value === '2') {
             setSelectedInput(true)
         } else {
             setSelectedInput(false)
@@ -46,22 +47,32 @@ function Test() {
         setSelectedGaveBirthAge(event.target.value);
     };
 
+    const handleChangePhone = (event) => {
+        setPhone(event.target.value);
+    };
+
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
-        const formData = {
-            selectedAge,
-            selectedCount,
-            selectedCount2,
-            selectedCount3,
-            selectedMenstrualAge,
-            selectedGaveBirthAge,
-        };
-
-        const formDataString = JSON.stringify(formData);
-
-        localStorage.setItem('formData', formDataString);
+        axios({
+            url: 'http://localhost:8000/api/v1/users/calculate',
+            method: 'POST',
+            data: {
+                phone: +phone,
+                age: +selectedAge,
+                first_menstrual: +selectedMenstrualAge,
+                first_live_birth: 1,
+                first_degree_cancer: 1,
+                previous_breast_biopsy: +selectedCount2,
+                atypical_hyperplasia: 1,
+                full_name: 'Alirizo',
+            }
+        })
+            .then(res => {
+                window.location.href = '/answer'
+                localStorage.setItem('items', res.config.data)
+            })
+            .catch(err => console.log(err))
 
         setSelectedAge('');
         setSelectedCount('');
@@ -70,7 +81,7 @@ function Test() {
         setSelectedMenstrualAge('');
         setSelectedGaveBirthAge('');
 
-        window.location.href = '/answer';
+        // window.location.href = '/answer';
     };
 
     return (
@@ -164,16 +175,16 @@ function Test() {
                                     <option value="" disabled>
                                         Выберите количество
                                     </option>
-                                    <option value="Не знаю">
+                                    <option value=''>
                                         Не знаю
                                     </option>
-                                    <option value="Ноль">
+                                    <option value='0'>
                                         Ноль
                                     </option>
-                                    <option value="Одна">
+                                    <option value='1'>
                                         Одна
                                     </option>
-                                    <option value="Больше одной">
+                                    <option value='2'>
                                         Больше одной
                                     </option>
                                 </select>
@@ -193,13 +204,13 @@ function Test() {
                                         <option value="" disabled>
                                             Выберите количество
                                         </option>
-                                        <option value="Не знаю">
+                                        <option value="0">
                                             Не знаю
                                         </option>
-                                        <option value="Нет">
+                                        <option value="1">
                                             Нет
                                         </option>
-                                        <option value="Да">
+                                        <option value="2">
                                             Да
                                         </option>
                                     </select>
@@ -273,6 +284,8 @@ function Test() {
                                         placeholder="Номер телефона"
                                         className="input input-bordered w-[80%] max-w-xs mt-2"
                                         required={true}
+                                        value={phone}
+                                        onInput={handleChangePhone}
                                     />
                                 </div>
                             </div>
